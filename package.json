@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "body-parser": "^1.18.3",
-    "chromecast": "git+https://github.com/majoer/media-chromecast.git",
+    "chromecast": "git+https://github.com/majoer/chromecast.git",
     "cors": "^2.8.4",
     "express": "^4.16.3",
     "lodash": "^4.17.10",
