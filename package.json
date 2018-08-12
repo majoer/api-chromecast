@@ -1,0 +1,24 @@
+{
+  "name": "matscast",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon -e js,json,env src/scripts/dev.js",
+    "start": "node src/scripts/start.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "dotenv": "^6.0.0"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "chromecast": "git+https://github.com/majoer/media-chromecast.git",
+    "cors": "^2.8.4",
+    "express": "^4.16.3",
+    "lodash": "^4.17.10",
+    "node-log": "git+https://github.com/majoer/node-log.git",
+    "ws": "^6.0.0"
+  }
+}
