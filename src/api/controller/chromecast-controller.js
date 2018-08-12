@@ -10,15 +10,15 @@ const chromecastService = new ChromecastService();
 
 module.exports = (app) => {
 
-  log('Registering endpoint GET /media/chromecasts');
-  app.get('/media/chromecasts/', (req, res) => {
+  log('Registering endpoint GET /chromecasts');
+  app.get('/chromecasts/', (req, res) => {
     const devices = chromecastService.getChromecasts();
 
     res.send(devices);
   });
 
-  log('Registering endpoint GET /media/chromecasts/:chromecast');
-  app.get('/media/chromecasts/:chromecast', (req, res) => {
+  log('Registering endpoint GET /chromecasts/:chromecast');
+  app.get('/chromecasts/:chromecast', (req, res) => {
     const device = chromecastService.getChromecast(req.params.chromecast);
 
     if (device) {
@@ -28,8 +28,8 @@ module.exports = (app) => {
     }
   });
 
-  log('Registering endpoint GET /media/chromecasts/:chromecast/client-status');
-  app.get('/media/chromecasts/:chromecast/client-status', (req, res) => {
+  log('Registering endpoint GET /chromecasts/:chromecast/client-status');
+  app.get('/chromecasts/:chromecast/client-status', (req, res) => {
     chromecastService.getClientStatus(req.params.chromecast).then((clientStatus) => {
       res.send(clientStatus);
     }).catch((err) => {
@@ -38,8 +38,8 @@ module.exports = (app) => {
     });
   });
 
-  log('Registering endpoint GET /media/chromecasts/:chromecast/player-status');
-  app.get('/media/chromecasts/:chromecast/player-status', (req, res) => {
+  log('Registering endpoint GET /chromecasts/:chromecast/player-status');
+  app.get('/chromecasts/:chromecast/player-status', (req, res) => {
     log('getPlayerStatus:begin');
 
     chromecastService.getPlayerStatus(req.params.chromecast).then((playerStatus) => {
@@ -57,8 +57,8 @@ module.exports = (app) => {
     });
   });
 
-  log('Registering endpoint POST /media/chromecasts/:chromecast/load');
-  app.post('/media/chromecasts/:chromecast/load', (req, res) => {
+  log('Registering endpoint POST /chromecasts/:chromecast/load');
+  app.post('/chromecasts/:chromecast/load', (req, res) => {
 
     let chromecastMedia;
     try {
@@ -77,8 +77,8 @@ module.exports = (app) => {
     });
   });
 
-  log('Registering endpoint POST /media/chromecasts/:chromecast/play');
-  app.post('/media/chromecasts/:chromecast/play', (req, res) => {
+  log('Registering endpoint POST /chromecasts/:chromecast/play');
+  app.post('/chromecasts/:chromecast/play', (req, res) => {
     chromecastService.play(req.params.chromecast).then((playerStatus) => {
       res.send(playerStatus);
     }).catch((err) => {
@@ -87,8 +87,8 @@ module.exports = (app) => {
     });
   });
 
-  log('Registering endpoint POST /media/chromecasts/:chromecast/pause');
-  app.post('/media/chromecasts/:chromecast/pause', (req, res) => {
+  log('Registering endpoint POST /chromecasts/:chromecast/pause');
+  app.post('/chromecasts/:chromecast/pause', (req, res) => {
     chromecastService.pause(req.params.chromecast).then((playerStatus) => {
       res.send(playerStatus);
     }).catch((err) => {
@@ -97,8 +97,8 @@ module.exports = (app) => {
     });
   });
 
-  log('Registering endpoint POST /media/chromecasts/:chromecast/stop');
-  app.post('/media/chromecasts/:chromecast/stop', (req, res) => {
+  log('Registering endpoint POST /chromecasts/:chromecast/stop');
+  app.post('/chromecasts/:chromecast/stop', (req, res) => {
     chromecastService.stop(req.params.chromecast).then((playerStatus) => {
       res.send(playerStatus);
     }).catch((err) => {
@@ -107,8 +107,8 @@ module.exports = (app) => {
     });
   });
 
-  log('Registering endpoint POST /media/chromecasts/:chromecast/seek');
-  app.post('/media/chromecasts/:chromecast/seek', (req, res) => {
+  log('Registering endpoint POST /chromecasts/:chromecast/seek');
+  app.post('/chromecasts/:chromecast/seek', (req, res) => {
     const timeInSeconds = req.body.timeInSeconds;
     if (timeInSeconds === undefined || timeInSeconds === null || timeInSeconds < 0) {
       res.sendStatus(400);
@@ -123,8 +123,8 @@ module.exports = (app) => {
     });
   });
 
-  log('Registering endpoint POST /media/chromecasts/:chromecast/step-forwards');
-  app.post('/media/chromecasts/:chromecast/step-forward', (req, res) => {
+  log('Registering endpoint POST /chromecasts/:chromecast/step-forwards');
+  app.post('/chromecasts/:chromecast/step-forward', (req, res) => {
     chromecastService.stepForwards(req.params.chromecast).then(() => {
       res.sendStatus(200);
     }).catch((err) => {
@@ -133,8 +133,8 @@ module.exports = (app) => {
     });
   });
 
-  log('Registering endpoint POST /media/chromecasts/:chromecast/step-backwards');
-  app.post('/media/chromecasts/:chromecast/step-backwards', (req, res) => {
+  log('Registering endpoint POST /chromecasts/:chromecast/step-backwards');
+  app.post('/chromecasts/:chromecast/step-backwards', (req, res) => {
     chromecastService.stepBackwards(req.params.chromecast).then(() => {
       res.sendStatus(200);
     }).catch((err) => {
@@ -143,8 +143,8 @@ module.exports = (app) => {
     });
   });
 
-  log('Registering endpoint GET /media/chromecasts/:chromecast/volume');
-  app.get('/media/chromecasts/:chromecast/volume', (req, res) => {
+  log('Registering endpoint GET /chromecasts/:chromecast/volume');
+  app.get('/chromecasts/:chromecast/volume', (req, res) => {
     chromecastService.getVolume(req.params.chromecast).then((clientStatus) => {
       res.sendStatus(clientStatus);
     }).catch((err) => {
@@ -153,8 +153,8 @@ module.exports = (app) => {
     });
   });
 
-  log('Registering endpoint POST /media/chromecasts/:chromecast/volume');
-  app.post('/media/chromecasts/:chromecast/volume', (req, res) => {
+  log('Registering endpoint POST /chromecasts/:chromecast/volume');
+  app.post('/chromecasts/:chromecast/volume', (req, res) => {
     const level = req.body.level;
     if (level === undefined || level === null || level < 0 || level > 1) {
       res.sendStatus(400);
@@ -169,8 +169,8 @@ module.exports = (app) => {
     });
   });
 
-  log('Registering endpoint GET /media/chromecasts/:chromecast/mute');
-  app.get('/media/chromecasts/:chromecast/mute', (req, res) => {
+  log('Registering endpoint GET /chromecasts/:chromecast/mute');
+  app.get('/chromecasts/:chromecast/mute', (req, res) => {
     chromecastService.isMuted(req.params.chromecast).then((clientStatus) => {
       res.send(clientStatus);
     }).catch((err) => {
@@ -179,8 +179,8 @@ module.exports = (app) => {
     });
   });
 
-  log('Registering endpoint POST /media/chromecasts/:chromecast/mute');
-  app.post('/media/chromecasts/:chromecast/mute', (req, res) => {
+  log('Registering endpoint POST /chromecasts/:chromecast/mute');
+  app.post('/chromecasts/:chromecast/mute', (req, res) => {
     chromecastService.mute(req.params.chromecast).then((clientStatus) => {
       res.send(clientStatus);
     }).catch((err) => {
@@ -189,8 +189,8 @@ module.exports = (app) => {
     });
   });
 
-  log('Registering endpoint POST /media/chromecasts/:chromecast/unmute');
-  app.post('/media/chromecasts/:chromecast/unmute', (req, res) => {
+  log('Registering endpoint POST /chromecasts/:chromecast/unmute');
+  app.post('/chromecasts/:chromecast/unmute', (req, res) => {
     chromecastService.unmute(req.params.chromecast).then((clientStatus) => {
       res.send(clientStatus);
     }).catch((err) => {
@@ -199,8 +199,8 @@ module.exports = (app) => {
     });
   });
 
-  log('Registering endpoint GET /media/chromecasts/:chromecast/queue');
-  app.get('/media/chromecasts/:chromecast/queue', (req, res) => {
+  log('Registering endpoint GET /chromecasts/:chromecast/queue');
+  app.get('/chromecasts/:chromecast/queue', (req, res) => {
     chromecastService.queueGet(req.params.chromecast, mediaList).then(queue => {
       res.send(queue);
     }).catch((err) => {
@@ -209,8 +209,8 @@ module.exports = (app) => {
     });
   });
 
-  log('Registering endpoint POST /media/chromecasts/:chromecast/queue');
-  app.post('/media/chromecasts/:chromecast/queue', (req, res) => {
+  log('Registering endpoint POST /chromecasts/:chromecast/queue');
+  app.post('/chromecasts/:chromecast/queue', (req, res) => {
     let mediaList;
 
     try {
@@ -238,8 +238,8 @@ module.exports = (app) => {
     }
   });
 
-  log('Registering endpoint PUT /media/chromecasts/:chromecast/queue');
-  app.put('/media/chromecasts/:chromecast/queue', (req, res) => {
+  log('Registering endpoint PUT /chromecasts/:chromecast/queue');
+  app.put('/chromecasts/:chromecast/queue', (req, res) => {
     if (req.query.reorder) {
       if (!_.isArray(req.body)) {
         res.send(400);
@@ -258,8 +258,8 @@ module.exports = (app) => {
     }
   });
 
-  log('Registering endpoint DELETE /media/chromecasts/:chromecast/queue');
-  app.delete('/media/chromecasts/:chromecast/queue', (req, res) => {
+  log('Registering endpoint DELETE /chromecasts/:chromecast/queue');
+  app.delete('/chromecasts/:chromecast/queue', (req, res) => {
     if (!_.isArray(req.body) || !_.every(req.body, _.isNumber)) {
       res.sendStatus(400);
       return;
