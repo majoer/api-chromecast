@@ -4,7 +4,7 @@ const express = require('express');
 const cors = require('cors');
 const matscastController = require('./controller/chromecast-controller');
 
-const PORT = process.env.EXRESS_PORT;
+const PORT = process.env.EXPRESS_PORT;
 
 class Api {
 
