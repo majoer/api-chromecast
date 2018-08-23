@@ -1,13 +1,13 @@
-## Chromecast API
+# API - Chromecast
 
 Api wrapper for
  https://github.com/majoer/chromecast
 
-#### Start
-- Dev mode: `npm run dev`
-- Prod mode: `npm start`
+## NPM Scripts
+- `npm start` - Starts the development server
+- `npm run start-production` - Starts the production server
 
-#### Endpoints
+## Endpoints
 - GET /chromecasts
 - GET /chromecasts
 - GET /chromecasts/:chromecast
@@ -30,9 +30,9 @@ Api wrapper for
 - PUT /chromecasts/:chromecast/queue
 - DELETE /chromecasts/:chromecast/queue
 
-#### Websoket
+## Websoket
 
-###### Events from server
+#### Events from server
   - NEW_CHROMECAST - Triggered on every new connected Chromecast
   - STATUS_PLAYER - Forwarded from internal player
   - STATUS_CLIENT - Forwarded from internal client
